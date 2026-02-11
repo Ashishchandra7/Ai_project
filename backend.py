@@ -5,7 +5,7 @@ from transformers import pipeline
 
 app = FastAPI()
 
-# Free embedding model
+#embedding model
 embedding = HuggingFaceEmbeddings(
     model_name="all-MiniLM-L6-v2"
 )
@@ -13,7 +13,7 @@ embedding = HuggingFaceEmbeddings(
 # Load vector database
 db = FAISS.load_local("faiss_index", embedding, allow_dangerous_deserialization=True)
 
-# Free local LLM
+#local LLM
 generator = pipeline("text-generation", model="gpt2")
 
 @app.get("/chat")
